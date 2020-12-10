@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 
@@ -14,8 +14,10 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {//ao instanciar o FXMLLoader temos instanciar a o arquivo fxml
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml"));
-			Parent parent = loader.load();//carrega o loader no obj parent
-			Scene mainScene = new Scene(parent);//crio obj Scene q será minha tela principal, recebendo recebendo o parent
+			ScrollPane scrollPane = loader.load();//carrega o loader no obj parent
+			scrollPane.setFitToHeight(true);//ajustar a altura
+			scrollPane.setFitToWidth(true);//ajustar largura
+			Scene mainScene = new Scene(scrollPane);//crio obj Scene q será minha tela principal, recebendo recebendo o parent
 			primaryStage.setScene(mainScene);//Stage é palco principal da minha sena, recebo Scene mainScene
 			primaryStage.setTitle("Aplicação em javaFX");//definindo titulo para palco
 			primaryStage.show();//mostrar palco
