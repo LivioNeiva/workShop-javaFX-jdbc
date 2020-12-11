@@ -10,6 +10,10 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
+	
+	//vamos expor uma referencia para Scene, a referencia do Sair.fxml está sendo guardada no atributo mainScene
+	private static Scene mainScene;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {//ao instanciar o FXMLLoader temos instanciar a o arquivo fxml
@@ -17,7 +21,7 @@ public class Main extends Application {
 			ScrollPane scrollPane = loader.load();//carrega o loader no obj parent
 			scrollPane.setFitToHeight(true);//ajustar a altura
 			scrollPane.setFitToWidth(true);//ajustar largura
-			Scene mainScene = new Scene(scrollPane);//crio obj Scene q será minha tela principal, recebendo recebendo o parent
+			mainScene = new Scene(scrollPane);//crio obj Scene q será minha tela principal, recebendo recebendo o parent
 			primaryStage.setScene(mainScene);//Stage é palco principal da minha sena, recebo Scene mainScene
 			primaryStage.setTitle("Aplicação em javaFX");//definindo titulo para palco
 			primaryStage.show();//mostrar palco
@@ -25,6 +29,11 @@ public class Main extends Application {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	//metodo para pegar a referencia do Sair.fxml
+	public static Scene  getMainScene() {
+		return mainScene;
 	}
 	
 	public static void main(String[] args) {
